@@ -2,9 +2,6 @@
 
 eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}'
     if 0; # not running under some shell
-
-eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}'
-    if 0; # not running under some shell
 use strict;
 
 # Examples:
@@ -152,6 +149,9 @@ sub gitdata {
 
   ### collect branch data ###
   chomp(my $commitid = `git rev-parse --short HEAD 2>&1`);
+  if ($commitid =~ /fatal: Needed a single revision/i) {
+    $commitid = "initial";
+  }
   my $branch = $commitid; #fallback value
   if ($headref =~ /fatal: ref HEAD is not a symbolic ref/i) {
     # find gitdir
@@ -207,9 +207,9 @@ sub gitdata {
     # if it terminated, parse output
     my ($section);
     foreach (@status) {
-      if (/^\# (\S.+?)\:\s*$/ && exists $sectionmap{$1}) {
-        $section = $sectionmap{$1};
-      } elsif ($section && /^\#\t\S/) {
+      if (/^(\# )?(\S.+?)\:\s*$/ && exists $sectionmap{$2}) {
+        $section = $sectionmap{$2};
+      } elsif ($section && /^\#?\t\S/) {
         $statuscount{$section}++;
         $valid = 1;
       } elsif (/^nothing to commit\b/) {
@@ -217,7 +217,7 @@ sub gitdata {
       } elsif (/\bis (ahead|behind) .+ by (\d+) commits?(\,? and can be fast\-forwarded)?/) {
         $statuscount{($1 eq 'ahead') ? 'A' : 'B'} = $2;
         $can_fast_forward = 1 if $3;
-      } elsif (/^\# and have (\d+) and (\d+) different commit/) {
+      } elsif (/^\#? and have (\d+) and (\d+) different commit/) {
         $statuscount{A} = $1;
         $statuscount{B} = $2;
       }
