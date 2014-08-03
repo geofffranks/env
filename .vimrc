@@ -41,10 +41,8 @@ set number
 set numberwidth=1
 highlight LineNr ctermfg=LightGray
 
-" Turn on syntax higlighting on a dark background.
-" Some update must have turned this off, jrh - 2008-11-28
+" Turn on syntax higlighting on
 syntax on
-set background=dark
 " ... and don't forget gvim
 if has('gui_running')
 	color slate
