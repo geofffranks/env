@@ -41,6 +41,11 @@ set number
 set numberwidth=1
 highlight LineNr ctermfg=LightGray
 
+" Fix folded code highlighting
+highlight clear folded
+highlight folded term=bold ctermfg=4 guifg=DarkBlue
+
+
 " Turn on syntax higlighting on
 syntax on
 " ... and don't forget gvim
