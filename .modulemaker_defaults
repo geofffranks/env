@@ -1,0 +1,74 @@
+package ExtUtils::ModuleMaker::Personal::Defaults;
+use strict;
+
+my %default_values = (
+        VERBOSE         => q{0},
+        INTERACTIVE     => q{1},
+        INCLUDE_POD_TEST=> q{0},
+        TEST_NAME_SEPARATOR=> q{_},
+        TEST_NUMBER_FORMAT=> q{%03d},
+        INCLUDE_WARNINGS=> q{0},
+        USAGE_MESSAGE   => q{modulemaker [-CIPVch] [-v version] [-n module_name] [-a abstract]
+        [-u author_name] [-p author_CPAN_ID] [-o organization]
+        [-w author_website] [-e author_e-mail]
+        [-l license_name] [-b build_system] [-s save_selections_as_defaults ]
+
+Currently Supported Features
+    -a   Specify (in quotes) an abstract for this extension
+    -b   Specify a build system for this extension
+    -c   Flag for compact base directory name
+    -C   Omit creating the Changes file, add HISTORY heading to stub POD
+    -d   Call methods which override default methods from this module
+    -e   Specify author's e-mail address
+    -h   Display this help message
+    -I   Disable INTERACTIVE mode, the command line arguments better be complete
+    -l   Specify a license for this extension
+    -n   Specify a name to use for the extension (required)
+    -o   Specify (in quotes) author's organization
+    -p   Specify author's CPAN ID
+    -P   Omit the stub POD section
+    -q   Flag to omit a constructor from module
+    -r   Specify permissions
+    -s   Flag to save selections as new personal default values
+    -u   Specify (in quotes) author's name
+    -v   Specify a version number for this extension
+    -V   Flag for verbose messages during module creation
+    -w   Specify author's web site
+
+modulemaker version: 0.51
+ExtUtils::ModuleMaker version: 0.51
+},
+        WEBSITE         => q{},
+        BUILD_SYSTEM    => q{Module::Build},
+        TEST_NAME_DERIVED_FROM_MODULE_NAME=> q{0},
+        FIRST_TEST_NUMBER=> q{1},
+        ORGANIZATION    => q{Geoff Franks},
+        AUTHOR          => q{Geoff Franks},
+        INCLUDE_SCRIPTS_DIRECTORY=> q{1},
+        EMAIL           => q{geoff.franks@gmail.com},
+        PERMISSIONS     => q{493},
+        INCLUDE_FILE_IN_PM=> q{0},
+        INCLUDE_TODO    => q{1},
+        COMPACT         => q{0},
+        NEED_POD        => q{1},
+        TEST_NAME       => q{load},
+        EXTRA_MODULES_SINGLE_TEST_FILE=> q{0},
+        INCLUDE_ID_LINE => q{0},
+        INCLUDE_MANIFEST_SKIP=> q{0},
+        NEED_NEW_METHOD => q{1},
+        INCLUDE_POD_COVERAGE_TEST=> q{0},
+        CHANGES_IN_POD  => q{0},
+        VERSION         => q{0.01},
+        INCLUDE_LICENSE => q{1},
+        CPANID          => q{},
+        LICENSE         => q{looselips},
+        ABSTRACT        => q{Module abstract (<= 44 characters) goes here}
+);
+
+sub default_values {
+    my $self = shift;
+    return { %default_values };
+}
+
+1;
+
