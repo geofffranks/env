@@ -8,6 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
+PATH=${PATH}:/usr/local/git/bin:~/bin:/opt/bin/:opt/sbin:/opt/local/bin:/opt/local/sbin
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -19,4 +20,9 @@ fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
+fi
+
+
+if [ -f "$HOME/bin/setup_ssh_agent" ]; then
+	. "$HOME/bin/setup_ssh_agent"
 fi
