@@ -99,6 +99,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+if [ -f ~/.alias ]; then
+	. ~/.alias
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -110,7 +114,7 @@ export PATH="$PATH:$HOME/bin";
 #Environ Variables
 export EDITOR=vim
 export CLICOLOR=true
-export LSCOLORS="gxfxaxdxcxegedabagacad"
+export LSCOLORS="exgxfxdxcxdxdxabagacad"
 export PAGER="less -R"
 export RI="-f ansi"
 
