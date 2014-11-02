@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function start_agent {
+	echo "ssh-agent not found. starting up"
+	eval `ssh-agent`
+	ssh-add
+}
+
+PID=`pgrep -U geoff ssh-agent | head -1`
+
+if [[ -n $PID ]]; then
+	echo "Found ssh-agent running, configuring session to use it"
+	SSH_AGENT_PID=$PID
+	SSH_AUTH_SOCK=`find /var/folders -name "agent.$((PID - 1))" -user geoff 2>/dev/null`
+	if [[ -n $SSH_AUTH_SOCK ]]; then
+		export SSH_AGENT_PID;
+		export SSH_AUTH_SOCK;
+	else
+		kill -9 $PID
+		start_agent
+	fi
+else
+	start_agent
+fi
