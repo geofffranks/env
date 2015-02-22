@@ -26,3 +26,5 @@ fi
 if [ -f "$HOME/bin/setup_ssh_agent" ]; then
 	. "$HOME/bin/setup_ssh_agent"
 fi
+
+export GOPATH=~/code/go
