@@ -6,12 +6,12 @@ function start_agent {
 	ssh-add
 }
 
-PID=`pgrep -U geoff ssh-agent | head -1`
+PID=`pgrep -U gfranks ssh-agent | head -1`
 
 if [[ -n $PID ]]; then
 	echo "Found ssh-agent running, configuring session to use it"
 	SSH_AGENT_PID=$PID
-	SSH_AUTH_SOCK=`find /var/folders -name "agent.$((PID - 1))" -user geoff 2>/dev/null`
+	SSH_AUTH_SOCK=`find /var/folders -name "agent.$((PID - 1))" -user gfranks 2>/dev/null`
 	if [[ -n $SSH_AUTH_SOCK ]]; then
 		export SSH_AGENT_PID;
 		export SSH_AUTH_SOCK;
