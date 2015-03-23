@@ -8,7 +8,7 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-PATH=${PATH}:/usr/local/git/bin:~/bin:/opt/bin/:opt/sbin:/opt/local/bin:/opt/local/sbin:$HOME/code/go/bin
+PATH=${PATH}:/usr/local/git/bin:~/bin:/opt/bin:opt/sbin:/opt/local/bin:/opt/local/sbin:$HOME/code/go/bin
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
