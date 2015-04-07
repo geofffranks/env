@@ -19,7 +19,7 @@ fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    PATH="$HOME/bin:$PATH:$HOME/bin//terraform"
 fi
 
 
@@ -27,4 +27,8 @@ if [ -f "$HOME/bin/setup_ssh_agent" ]; then
 	. "$HOME/bin/setup_ssh_agent"
 fi
 
-export GOPATH=~/code/go
+export GOPATH=$HOME/code/go
+
+if [[ ! -d $HOME/.vim/bundle/vim-go ]]; then
+	git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
+fi
