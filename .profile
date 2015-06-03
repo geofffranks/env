@@ -26,6 +26,10 @@ if [ -d "$HOME/code/go/bin" ]; then
     PATH="$PATH:$HOME/code/go/bin"
 fi
 
+if [ -d "/var/vcap/bosh/bin" ]; then
+	PATH="/var/vcap/bosh/bin:$PATH"
+fi
+
 if [ -f "$HOME/bin/setup_ssh_agent" ]; then
 	. "$HOME/bin/setup_ssh_agent"
 fi
