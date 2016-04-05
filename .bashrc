@@ -129,7 +129,7 @@ alias gs="git status"
 #alias gci="git commit"
 #alias gb="git branch"
 #alias gba="git branch -a"
-export SERVER_NAME=`hostname -f`
+export SERVER_NAME=`hostname`
 
 if [ -s /var/lib/puppet/ec2_instance_tags ]
 then
