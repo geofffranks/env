@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 
 for file in $(ls -a); do
   if [[ $file != "." && $file != ".." && $file != "README.md" && $file != "install" && $file != ".git" ]]; then
-    cp $file ~/$file
+    cp -R $file ~/$file
   fi
 done
