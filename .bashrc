@@ -118,17 +118,17 @@ export PAGER="less -R"
 export RI="-f ansi"
 
 
-alias gdc="git diff --cached"
-alias gd="git diff"
-alias gds="git ds"
-alias gdsc="git dsc"
+#alias gdc="git diff --cached"
+#alias gd="git diff"
+#alias gds="git ds"
+#alias gdsc="git dsc"
 alias gl="git log -n 20 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset %an' --abbrev-commit --date=relative"
 alias gs="git status"
-alias gsc="git status --cached"
-alias gco="git checkout"
-alias gci="git commit"
-alias gb="git branch"
-alias gba="git branch -a"
+#alias gsc="git status --cached"
+#alias gco="git checkout"
+#alias gci="git commit"
+#alias gb="git branch"
+#alias gba="git branch -a"
 export SERVER_NAME=`hostname -f`
 
 if [ -s /var/lib/puppet/ec2_instance_tags ]
@@ -137,10 +137,17 @@ then
 fi
 
 export PS0='\[\e[0;36m\]\t\[\e[0m\] \[\e[0;33m\]\u@\[\e[0m\]\[\e[0;31m\]$SERVER_NAME\[\e[0m\] {\[\e[1;33m\]\w\[\e[0m\]}\[\e[0;36m\]%{(%b\[\e[1;37m\]%m\[\e[0;36m\])[%u%c%f%t\[\e[0;36m\]]%}\[\e[0m\] $ '
-if [[ -x $(which git) && -x $(which gitprompt.pl 2>/dev/null) ]]; then
+if [[ -x $(which gitprompt.pl 2>/dev/null) ]]; then
     export PROMPT_COMMAND=$PROMPT_COMMAND' export PS1=$(gitprompt.pl statuscount=1 u=%[%e[31m%] c=%[%e[32m%] f=%[%e[1\;37m%])'
 fi
 
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 PERL5LIB="$HOME/perl5/lib/perl5"; export PERL5LIB;
+export PATH="$PATH:$HOME/perl5/bin"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+if [[ -x $(which direnv) ]]; then
+	eval "$(direnv hook bash)"
+fi
