@@ -145,9 +145,3 @@ PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 PERL5LIB="$HOME/perl5/lib/perl5"; export PERL5LIB;
 export PATH="$PATH:$HOME/perl5/bin"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-if [[ -x $(which direnv) ]]; then
-	eval "$(direnv hook bash)"
-fi
