@@ -10,6 +10,7 @@
 [alias]
 	br = branch
 	co = checkout
+	ci = commit
 	who = shortlog -s --
 	last = cat-file commit HEAD
 	ds = diff --stat --name-status
