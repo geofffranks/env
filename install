@@ -1,7 +1,21 @@
 #!/bin/bash
 
 for file in $(ls -a); do
-  if [[ $file != "." && $file != ".." && $file != "README.md" && $file != "install" && $file != ".git" ]]; then
+  if [[ $file != "." && $file != ".." && $file != "README.md" && $file != "install" && $file != ".git" && file != "nvim" ]]; then
     cp -R $file ~/$file
   fi
 done
+
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd )"
+
+git clone https://github.com/magicmonty/bash-git-prompt.git "${HOME}/.bash-git-prompt" --depth=1
+
+ln -s "${DIR}/nvim" "${HOME}/.config/nvim"
+nvim +PlugInstall +qall
+
+git clone https://github.com/fatih/vim-go.git "${HOME}/.local/share/nvim/site/pack/plugins/start/vim-go"
+npm install neovim
+pip3 install neovim
+export GOPATH="${HOME}/go"
+nvim +GoInstallBinaries +qall
+

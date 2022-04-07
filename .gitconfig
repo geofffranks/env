@@ -9,6 +9,7 @@
 	ui = true
 [alias]
 	br = branch
+	ci = commit
 	co = checkout
 	ci = commit
 	who = shortlog -s --
@@ -23,3 +24,9 @@
 	sls = stash list
 [diff]
 	patience = true
+[credential]
+	helper = cache --timeout=3600000
+[http]
+	sslVerify = true
+[push]
+	default = matching

@@ -8,7 +8,8 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-PATH=${PATH}:/usr/local/git/bin:~/bin:/opt/bin:opt/sbin:/opt/local/bin:/opt/local/sbin
+PATH=${PATH}:/usr/local/bin:
+
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
     # include .bashrc if it exists
@@ -19,23 +20,9 @@ fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH:$HOME/bin/terraform"
-fi
-
-if [ -d "$HOME/code/go/bin" ]; then
-    PATH="$PATH:$HOME/code/go/bin"
-fi
-
-if [ -d "/var/vcap/bosh/bin" ]; then
-	PATH="/var/vcap/bosh/bin:$PATH"
+    PATH="$HOME/bin:$PATH"
 fi
 
 if [ -f "$HOME/bin/setup_ssh_agent" ]; then
 	. "$HOME/bin/setup_ssh_agent"
-fi
-
-export GOPATH=$HOME/code/go
-
-if [[ ! -d $HOME/.vim/bundle/vim-go ]]; then
-	git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go
 fi
