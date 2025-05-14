@@ -81,3 +81,18 @@ if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
   export GIT_PROMPT_ONLY_IN_REPO=0
   export GIT_PROMPT_THEME="Custom"
 fi
+
+eval "$(go env)"
+
+export PATH="$PATH:$GOPATH/bin"
+export PATH="/usr/local/opt/node@20/bin:$PATH"
+export LDFLAGS="-L/usr/local/opt/node@20/lib"
+export CPPFLAGS="-I/usr/local/opt/node@20/include"
+
+
+eval "$(rbenv init - bash)"
+
+# Ghostty shell integration for Bash. This should be at the top of your bashrc!
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi

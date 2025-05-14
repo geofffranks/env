@@ -19,3 +19,5 @@ pip3 install neovim
 export GOPATH="${HOME}/go"
 nvim +GoInstallBinaries +qall
 
+mkdir -p "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"
+mv ghostty.config "${HOME}/Library/Application Support/com.mitchellh.ghostty/config"
